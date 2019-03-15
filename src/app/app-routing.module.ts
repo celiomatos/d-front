@@ -5,7 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: 'pagamento',
+        loadChildren: './page/pagamento/pagamento.module#PagamentoModule'
+      }
+    ]
   },
   { path: '**', redirectTo: '' }
 ];

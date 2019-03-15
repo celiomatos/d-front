@@ -1,3 +1,4 @@
+import { PagamentoModule } from './page/pagamento/pagamento.module';
 import { HomeModule } from './page/home/home.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HomeModule
+    HomeModule,
+    PagamentoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
