@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'der-home',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild('snav') snav: MatSidenav;  
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  close() {
+    this.snav.close();
   }
 
 }

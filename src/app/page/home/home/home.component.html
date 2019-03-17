@@ -8,7 +8,7 @@
 
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #snav mode="over">
-      <der-menu></der-menu>
+      <der-menu (evtCloseMenu)="close()"></der-menu>
     </mat-sidenav>
 
     <mat-sidenav-content>

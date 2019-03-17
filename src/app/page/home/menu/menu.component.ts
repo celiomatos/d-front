@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'der-menu',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  @Output() evtCloseMenu = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  closeSideNav() {
+    this.evtCloseMenu.emit();
+  }
 }

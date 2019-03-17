@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'pagamento',
-        loadChildren: './page/pagamento/pagamento.module#PagamentoModule'
+        loadChildren: '../app/page/pagamento/pagamento.module#PagamentoModule'
       }
     ]
   },
