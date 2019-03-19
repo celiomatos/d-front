@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { PagamentoSearch } from '../shared/pagamento.dto';
 
 @Component({
   selector: 'der-pagamento-search',
@@ -7,7 +8,8 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./pagamento-search.component.scss']
 })
 export class PagamentoSearchComponent implements OnInit {
-  valor = '5455-tete';
+  searchDto = new PagamentoSearch();
+
   constructor(private dialogRef: MatDialogRef<PagamentoSearchComponent>) {}
 
   ngOnInit() {}

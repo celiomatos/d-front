@@ -2,3 +2,15 @@
   pagamento-list works!
 </p>
 <button mat-button (click)="search()">Pesquisar</button>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="orgao">
+    <th mat-header-cell *matHeaderCellDef> Orgão </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.orgao.nome }}</p>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+</table>
+<mat-paginator #paginator [length]="totalElements" [pageSizeOptions]="[10, 30, 50]" (page)="changePage($event)">
+</mat-paginator>

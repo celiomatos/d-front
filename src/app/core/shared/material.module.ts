@@ -5,7 +5,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material';
+import {
+  MatDialogModule,
+  MatTableModule,
+  MatPaginatorModule
+} from '@angular/material';
 
 @NgModule({
   imports: [CommonModule],
@@ -15,7 +19,9 @@ import { MatDialogModule } from '@angular/material';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule {}
