@@ -11,6 +11,6 @@ export class PagamentoService extends ApiService<
   PagamentoSearch
 > {
   protected getPath(): string {
-    return '/pagamentos/';
+    return 'pagamentos/';
   }
 }

@@ -14,7 +14,7 @@ export abstract class ApiService<T, D, S> {
   }
 
   findAll(search: S): Observable<D> {
-    return this.httpClient.get<D>(environment.apiUrl + this.getPath(), search);
+    return this.httpClient.post<D>(environment.apiUrl + this.getPath(), search);
   }
 
   save(model: T): Observable<T> {
