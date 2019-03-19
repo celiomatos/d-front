@@ -2,15 +2,72 @@
   pagamento-list works!
 </p>
 <button mat-button (click)="search()">Pesquisar</button>
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- orgao -->
   <ng-container matColumnDef="orgao">
     <th mat-header-cell *matHeaderCellDef> Orgão </th>
     <td mat-cell *matCellDef="let pagamento">
       <p>{{ pagamento.orgao.nome }}</p>
     </td>
   </ng-container>
+  <!-- credor -->
+  <ng-container matColumnDef="credor">
+    <th mat-header-cell *matHeaderCellDef> Credor </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.credor.nome }}</p>
+    </td>
+  </ng-container>
+  <!-- data -->
+  <ng-container matColumnDef="data">
+    <th mat-header-cell *matHeaderCellDef> Data </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.data }}</p>
+    </td>
+  </ng-container>
+  <!-- valor -->
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell *matHeaderCellDef> Valor </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.valor }}</p>
+    </td>
+  </ng-container>
+  <!-- nrob -->
+  <ng-container matColumnDef="nrob">
+    <th mat-header-cell *matHeaderCellDef> OB </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.nrob }}</p>
+    </td>
+  </ng-container>
+  <!-- nrnl -->
+  <ng-container matColumnDef="nrnl">
+    <th mat-header-cell *matHeaderCellDef> NL </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.nrnl }}</p>
+    </td>
+  </ng-container>
+  <!-- nrne -->
+  <ng-container matColumnDef="nrne">
+    <th mat-header-cell *matHeaderCellDef> NE </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.nrne }}</p>
+    </td>
+  </ng-container>
+  <!-- fonte -->
+  <ng-container matColumnDef="fonte">
+    <th mat-header-cell *matHeaderCellDef> Fonte </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.fonte.id }}</p>
+    </td>
+  </ng-container>
+  <!-- classificacao -->
+  <ng-container matColumnDef="classificacao">
+    <th mat-header-cell *matHeaderCellDef> Classificação </th>
+    <td mat-cell *matCellDef="let pagamento">
+      <p>{{ pagamento.classificacao.nome }}</p>
+    </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
 </table>
-<mat-paginator #paginator [length]="totalElements" [pageSizeOptions]="[10, 30, 50]" (page)="changePage($event)">
+<mat-paginator [length]="totalElements" [pageSizeOptions]="[10, 30, 50]" (page)="changePage($event)">
 </mat-paginator>
