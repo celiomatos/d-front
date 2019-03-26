@@ -1,14 +1,10 @@
 import { PagamentoSearchComponent } from './../pagamento-search/pagamento-search.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  MatDialog,
-  MatTableDataSource,
-  MatPaginator,
-  PageEvent
-} from '@angular/material';
+import { MatDialog, MatTableDataSource, MatPaginator, PageEvent } from '@angular/material';
 import { PagamentoService } from '../shared/pagamento.service';
 import { Pagamento } from '../shared/pagamento.model';
 import { PagamentoSearch } from '../shared/pagamento.dto';
+import { TopFiveOrgaos } from 'src/app/core/dto/top-five-orgaos.dto';
 
 @Component({
   selector: 'der-pagamento-list',
@@ -16,29 +12,17 @@ import { PagamentoSearch } from '../shared/pagamento.dto';
   styleUrls: ['./pagamento-list.component.scss']
 })
 export class PagamentoListComponent implements OnInit {
-  tableColumns = [
-    'orgao',
-    'credor',
-    'data',
-    'valor',
-    'nrob',
-    'nrnl',
-    'nrne',
-    'fonte',
-    'classificacao'
-  ];
+  tableColumns = ['orgao', 'credor', 'data', 'valor', 'nrob', 'nrnl', 'nrne', 'fonte', 'classificacao'];
   dataSource = new MatTableDataSource<Pagamento>();
   page = 0;
   size = 10;
   totalElements = 0;
   searchDto = new PagamentoSearch();
+  topFiveOrgao: TopFiveOrgaos[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(
-    private dialog: MatDialog,
-    private pagamentoService: PagamentoService
-  ) {}
+  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) {}
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -86,5 +70,16 @@ export class PagamentoListComponent implements OnInit {
       this.searchDto = dialogRef.componentInstance.searchDto;
       this.findPagamentos();
     });
+  }
+
+  topFiveOrgaos(dateIinicial?: Date, dateFinal?: Date) {
+    this.pagamentoService.topFiveOrgaos(undefined, undefined).subscribe(
+      data => {
+        this.topFiveOrgao = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

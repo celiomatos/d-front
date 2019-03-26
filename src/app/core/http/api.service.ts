@@ -7,30 +7,30 @@ import { HttpClient } from '@angular/common/http';
 export abstract class ApiService<T, D, S> {
   constructor(protected httpClient: HttpClient) {}
 
-  protected abstract getPath(): string;
+  protected basePath(): string {
+    return environment.apiUrl;
+  }
+  protected abstract path(): string;
 
   findById(id: number): Observable<T> {
-    return this.httpClient.get<T>(environment.apiUrl + this.getPath() + id);
+    return this.httpClient.get<T>(this.basePath + this.path() + id);
   }
 
   findAll(search: S): Observable<D> {
-    return this.httpClient.post<D>(environment.apiUrl + this.getPath(), search);
+    return this.httpClient.post<D>(this.basePath + this.path(), search);
   }
 
   save(model: T): Observable<T> {
-    return this.httpClient.post<T>(environment.apiUrl + this.getPath(), model);
+    return this.httpClient.post<T>(this.basePath + this.path(), model);
   }
 
   update(id: number, model: T): Observable<T> {
-    return this.httpClient.put<T>(
-      environment.apiUrl + this.getPath() + id,
-      model
-    );
+    return this.httpClient.put<T>(this.basePath + this.path() + id, model);
   }
 
   delete(id: number): Promise<T> {
     return this.httpClient
-      .delete<T>(environment.apiUrl + this.getPath() + id)
+      .delete<T>(this.basePath + this.path() + id)
       .toPromise();
   }
 }
