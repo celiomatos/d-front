@@ -5,6 +5,7 @@ import { PagamentoSearchComponent } from './pagamento-search/pagamento-search.co
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/core/shared/material.module';
 import { PagamentoService } from './shared/pagamento.service';
+import { TopFiveOrgaosComponent } from 'src/app/core/shared/top-five-orgaos/top-five-orgaos.component';
 
 const ROUTES: Routes = [
   {
@@ -14,7 +15,8 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [PagamentoListComponent, PagamentoSearchComponent],
+  declarations: [PagamentoListComponent, PagamentoSearchComponent, TopFiveOrgaosComponent],
+  exports: [TopFiveOrgaosComponent],
   entryComponents: [PagamentoSearchComponent],
   providers: [PagamentoService],
   imports: [CommonModule, RouterModule.forChild(ROUTES), MaterialModule]

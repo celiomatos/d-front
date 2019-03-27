@@ -10,13 +10,13 @@ import { HttpParams } from '@angular/common/http';
 @Injectable()
 export class PagamentoService extends ApiService<Pagamento, Page<Pagamento>, PagamentoSearch> {
   protected path(): string {
-    return this.basePath + 'pagamentos/';
+    return this.basePath() + 'pagamentos/';
   }
 
   topFiveOrgaos(dateInicial: string, dateFinal: string): Observable<TopFiveOrgaos[]> {
-    const params = new HttpParams();
-    params.append('dateInicial', dateInicial);
-    params.append('dateFinal', dateFinal);
+    let params = new HttpParams();
+    params = params.append('dateInicial', dateInicial);
+    params = params.append('dateFinal', dateFinal);
 
     return this.httpClient.get<TopFiveOrgaos[]>(this.path() + 'top-five-orgaos/', { params: params });
   }

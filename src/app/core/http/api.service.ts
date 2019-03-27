@@ -17,7 +17,7 @@ export abstract class ApiService<T, D, S> {
   }
 
   findAll(search: S): Observable<D> {
-    return this.httpClient.post<D>(this.basePath + this.path(), search);
+    return this.httpClient.post<D>(this.path(), search);
   }
 
   save(model: T): Observable<T> {
@@ -29,8 +29,6 @@ export abstract class ApiService<T, D, S> {
   }
 
   delete(id: number): Promise<T> {
-    return this.httpClient
-      .delete<T>(this.basePath + this.path() + id)
-      .toPromise();
+    return this.httpClient.delete<T>(this.basePath + this.path() + id).toPromise();
   }
 }

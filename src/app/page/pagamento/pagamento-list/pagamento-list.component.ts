@@ -18,7 +18,6 @@ export class PagamentoListComponent implements OnInit {
   size = 10;
   totalElements = 0;
   searchDto = new PagamentoSearch();
-  topFiveOrgao: TopFiveOrgaos[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -70,16 +69,5 @@ export class PagamentoListComponent implements OnInit {
       this.searchDto = dialogRef.componentInstance.searchDto;
       this.findPagamentos();
     });
-  }
-
-  topFiveOrgaos(dateIinicial?: Date, dateFinal?: Date) {
-    this.pagamentoService.topFiveOrgaos(undefined, undefined).subscribe(
-      data => {
-        this.topFiveOrgao = data;
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 }
