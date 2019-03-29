@@ -1,7 +1,7 @@
-import { environment } from './../../../environments/environment.prod';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { environment } from './../../../environments/environment.prod';
 
 @Injectable()
 export abstract class ApiService<T, D, S> {
@@ -16,8 +16,23 @@ export abstract class ApiService<T, D, S> {
     return this.httpClient.get<T>(this.basePath + this.path() + id);
   }
 
-  findAll(search: S): Observable<D> {
-    return this.httpClient.post<D>(this.path(), search);
+  search(search: S): Observable<D> {
+    return this.httpClient.post<D>(this.path() + '/search/', search);
+  }
+
+  findAll(page: number = 0, count: number = 5, order: string = 'ASC', sortProperty: string = 'nome'): Observable<D> {
+    return this.httpClient.get<D>(
+      this.path() +
+        'find-all/' +
+        '?page=' +
+        page +
+        '&count=' +
+        count +
+        '&order=' +
+        order +
+        '&sortProperty=' +
+        sortProperty
+    );
   }
 
   save(model: T): Observable<T> {

@@ -1,3 +1,11 @@
 {
-    "prettier.printWidth": 120
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.renderWhitespace": "all",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "prettier.printWidth": 120,
+  "html.format.wrapLineLength": 120,
+  "html.format.wrapAttributes": "auto"
 }

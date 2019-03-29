@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
-import { PagamentoSearch } from '../shared/pagamento.dto';
-import { PagamentoService } from '../shared/pagamento.service';
-import { Orgao } from 'src/app/core/model/orgao.model';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
+import { OrgaoService } from 'src/app/core/http/orgao.service';
+import { Orgao } from 'src/app/core/model/orgao.model';
+import { PagamentoSearch } from '../shared/pagamento.dto';
 
 @Component({
   selector: 'der-pagamento-search',
@@ -18,7 +18,7 @@ export class PagamentoSearchComponent implements OnInit {
   page = 0;
   last = false;
 
-  constructor(private dialogRef: MatDialogRef<PagamentoSearchComponent>, private pagamentoService: PagamentoService) {}
+  constructor(private dialogRef: MatDialogRef<PagamentoSearchComponent>, public orgaoService: OrgaoService) {}
 
   ngOnInit() {
     this.formValidation = new FormGroup({
@@ -34,7 +34,7 @@ export class PagamentoSearchComponent implements OnInit {
 
   paginated() {
     if (!this.last) {
-      this.pagamentoService.findAllOrgaos(this.page).subscribe(
+      this.orgaoService.findAll(this.page).subscribe(
         (data: any) => {
           this.orgaoList = this.orgaoList.concat(data.content);
           this.page++;

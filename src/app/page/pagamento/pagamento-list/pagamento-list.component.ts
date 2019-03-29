@@ -1,10 +1,9 @@
-import { PagamentoSearchComponent } from './../pagamento-search/pagamento-search.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatTableDataSource, MatPaginator, PageEvent } from '@angular/material';
-import { PagamentoService } from '../shared/pagamento.service';
-import { Pagamento } from '../shared/pagamento.model';
+import { MatDialog, MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
 import { PagamentoSearch } from '../shared/pagamento.dto';
-import { TopFiveOrgaos } from 'src/app/core/dto/top-five-orgaos.dto';
+import { Pagamento } from '../shared/pagamento.model';
+import { PagamentoService } from '../shared/pagamento.service';
+import { PagamentoSearchComponent } from './../pagamento-search/pagamento-search.component';
 
 @Component({
   selector: 'der-pagamento-list',
@@ -31,7 +30,7 @@ export class PagamentoListComponent implements OnInit {
   findPagamentos() {
     this.searchDto.page = this.page;
     this.searchDto.size = this.size;
-    this.pagamentoService.findAll(this.searchDto).subscribe(
+    this.pagamentoService.search(this.searchDto).subscribe(
       data => {
         this.dataSource.data = this.dataSource.data.concat(data.content);
         this.totalElements = data.totalElements;

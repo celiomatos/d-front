@@ -1,7 +1,7 @@
-import { Chart } from 'chart.js';
 import { Component, OnInit } from '@angular/core';
+import { Chart } from 'chart.js';
 import { TopFiveOrgaos } from '../../dto/top-five-orgaos.dto';
-import { PagamentoService } from 'src/app/page/pagamento/shared/pagamento.service';
+import { OrgaoService } from '../../http/orgao.service';
 
 @Component({
   selector: 'der-top-five-orgaos',
@@ -13,7 +13,8 @@ export class TopFiveOrgaosComponent implements OnInit {
   topFiveOrgao: TopFiveOrgaos[] = [];
   dataChart: string[] = [];
   labelChart: string[] = [];
-  constructor(private pagamentoService: PagamentoService) {}
+
+  constructor(private orgaoService: OrgaoService) {}
 
   ngOnInit() {
     this.init();
@@ -31,7 +32,7 @@ export class TopFiveOrgaosComponent implements OnInit {
   findTopFiveOrgaos(dateIinicial: Date, dateFinal: Date) {
     dateIinicial.setHours(0, 0, 0);
     dateFinal.setHours(23, 59, 59);
-    this.pagamentoService.topFiveOrgaos(String(dateIinicial.getTime()), String(dateFinal.getTime())).subscribe(
+    this.orgaoService.topFiveOrgaos(String(dateIinicial.getTime()), String(dateFinal.getTime())).subscribe(
       data => {
         this.topFiveOrgao = data;
         data.forEach(orgao => {

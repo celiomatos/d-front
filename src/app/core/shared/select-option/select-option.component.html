@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline">
+  <mat-label>{{ label }}</mat-label>
+  <mat-select multiple [formControl]="selectFormControl" (selectionChange)="onChange()">
+    <mat-option *ngFor="let content of contents" [value]="content.id" id="content-{{ contents.indexOf(content) }}">
+      <span> {{ content.nome }} </span>
+    </mat-option>
+    <mat-divider></mat-divider>
+    <span id="loadNext" fxLayoutAlign="center center" (click)="loadNext()" *ngIf="!last">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </span>
+  </mat-select>
+  <mat-error *ngIf="selectFormControl.hasError('required')">
+    <span> {{ m6s.message('NAME') }} </span>
+  </mat-error>
+</mat-form-field>
