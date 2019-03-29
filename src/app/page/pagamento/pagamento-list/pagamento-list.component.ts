@@ -15,7 +15,7 @@ export class PagamentoListComponent implements OnInit {
   tableColumns = ['orgao', 'credor', 'data', 'valor', 'nrob', 'nrnl', 'nrne', 'fonte', 'classificacao'];
   dataSource = new MatTableDataSource<Pagamento>();
   page = 0;
-  size = 10;
+  size = 5;
   totalElements = 0;
   searchDto = new PagamentoSearch();
 

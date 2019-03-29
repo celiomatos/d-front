@@ -1,7 +1,38 @@
-<p>
-  pagamento-search works!
-</p>
+<form [formGroup]="formValidation">
+  <p>
+    pagamento-search works!
+  </p>
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dataInicial">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Outline form field</mat-label>
+      <input matInput type="number" placeholder="Favorite food">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 300px;">
+      <mat-label>Outline form field</mat-label>
+      <mat-select multiple formControlName="orgaos">
+        <!-- <mat-select-trigger>
+        {{orgaos.value ? orgaos.value[0] : ''}}
+        <span *ngIf="orgaos.value?.length > 1">
+          (+{{orgaos.value.length - 1}} {{orgaos.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger> -->
+        <mat-option *ngFor="let orgao of orgaoList" [value]="orgao.id">{{orgao.nome}}</mat-option>
+        <mat-divider></mat-divider>
+        <span id="loadNext" fxLayoutAlign="center center" (click)="loadNext()" *ngIf="!last">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </span>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>
 <button mat-button id="btCancel" type="button" (click)="search()">
   CANCELAR
 </button>

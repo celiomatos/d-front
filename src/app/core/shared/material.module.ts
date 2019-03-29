@@ -5,7 +5,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule, MatTableModule, MatPaginatorModule } from '@angular/material';
+import {
+  MatDialogModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatInputModule,
+  MatSelectModule,
+  MatDividerModule
+} from '@angular/material';
 
 @NgModule({
   imports: [CommonModule],
@@ -17,7 +27,13 @@ import { MatDialogModule, MatTableModule, MatPaginatorModule } from '@angular/ma
     MatCardModule,
     MatDialogModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule {}

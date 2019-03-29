@@ -72,5 +72,5 @@
   <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
 </table>
-<mat-paginator [length]="totalElements" [pageSizeOptions]="[10, 30, 50]" (page)="changePage($event)">
+<mat-paginator [length]="totalElements" [pageSizeOptions]="[5]" (page)="changePage($event)">
 </mat-paginator>
