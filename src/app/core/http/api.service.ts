@@ -20,6 +20,28 @@ export abstract class ApiService<T, D, S> {
     return this.httpClient.post<D>(this.path() + '/search/', search);
   }
 
+  findByNome(
+    nome: string,
+    page: number = 0,
+    count: number = 5,
+    order: string = 'ASC',
+    sortProperty: string = 'nome'
+  ): Observable<D> {
+    return this.httpClient.get<D>(
+      this.path() +
+        'find-by-nome/' +
+        nome +
+        '?page=' +
+        page +
+        '&count=' +
+        count +
+        '&order=' +
+        order +
+        '&sortProperty=' +
+        sortProperty
+    );
+  }
+
   findAll(page: number = 0, count: number = 5, order: string = 'ASC', sortProperty: string = 'nome'): Observable<D> {
     return this.httpClient.get<D>(
       this.path() +

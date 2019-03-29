@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { M6S } from '../messages';
 
 @Component({
@@ -7,7 +9,7 @@ import { M6S } from '../messages';
   templateUrl: './select-option.component.html',
   styleUrls: ['./select-option.component.scss']
 })
-export class SelectOptionComponent implements OnInit {
+export class SelectOptionComponent implements OnInit, OnDestroy {
   m6s = M6S;
   contents: any[] = [];
   page = 0;
@@ -17,11 +19,17 @@ export class SelectOptionComponent implements OnInit {
   @Input() selectFormControl: FormControl;
   @Input() selectService: any;
   @Output() selectOnChange = new EventEmitter();
+  nomeControl = new Subject<string>();
 
   constructor() {}
 
   ngOnInit() {
     this.paginated();
+    this.filter();
+  }
+
+  ngOnDestroy(): void {
+    this.nomeControl.unsubscribe();
   }
 
   onChange() {
@@ -45,5 +53,25 @@ export class SelectOptionComponent implements OnInit {
         }
       );
     }
+  }
+
+  filter() {
+    this.page = 0;
+    this.nomeControl.pipe(debounceTime(500)).subscribe(nome => {
+      console.log(nome);
+      this.selectService.findByNome(nome).subscribe((data: any) => {
+        this.contents = data.content;
+      });
+    });
+    // .pipe(
+    //   switchMap(nome => {
+    //     console.log('olha eu aqui');
+    //     return this.selectService.findByNome(nome).pipe(
+    //       map((data: any) => {
+    //         this.contents = data.content;
+    //       })
+    //     );
+    //   })
+    // );
   }
 }
