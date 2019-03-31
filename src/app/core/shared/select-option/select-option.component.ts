@@ -24,7 +24,7 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    this.paginated();
+    this.loadNext();
     this.filter();
   }
 
@@ -37,11 +37,8 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
   }
 
   loadNext() {
-    this.paginated();
-  }
-
-  paginated() {
     if (!this.last) {
+      console.log(this.nomeControl.next);
       this.selectService.findAll(this.page, 5).subscribe(
         (data: any) => {
           this.contents = this.contents.concat(data.content);
@@ -63,15 +60,5 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
         this.contents = data.content;
       });
     });
-    // .pipe(
-    //   switchMap(nome => {
-    //     console.log('olha eu aqui');
-    //     return this.selectService.findByNome(nome).pipe(
-    //       map((data: any) => {
-    //         this.contents = data.content;
-    //       })
-    //     );
-    //   })
-    // );
   }
 }

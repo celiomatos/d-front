@@ -5,14 +5,14 @@
   <div fxLayout="column" fxLayoutAlign="space-around center">
     <mat-form-field appearance="outline">
       <mat-label>Outline form field</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dataInicial">
+      <input matInput [matDatepicker]="picker" formControlName="dataInicial" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Outline form field</mat-label>
-      <input matInput type="number" placeholder="Favorite food">
+      <input matInput type="number" placeholder="Favorite food" />
     </mat-form-field>
 
     <der-select-option [selectFormControl]="formValidation.controls['orgaos']" [selectService]="orgaoService">
