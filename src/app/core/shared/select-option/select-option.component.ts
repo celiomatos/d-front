@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { M6S } from '../messages';
 
@@ -19,7 +19,9 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
   @Input() selectFormControl: FormControl;
   @Input() selectService: any;
   @Output() selectOnChange = new EventEmitter();
+  searchInput = new FormControl();
   nomeControl = new Subject<string>();
+  observable$ = new Observable<any>();
 
   constructor() {}
 
@@ -38,8 +40,12 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
 
   loadNext() {
     if (!this.last) {
-      console.log(this.nomeControl.next);
-      this.selectService.findAll(this.page, 5).subscribe(
+      if (this.searchInput.value) {
+        this.observable$ = this.selectService.findByNome(this.searchInput.value, this.page);
+      } else {
+        this.observable$ = this.selectService.findAll(this.page);
+      }
+      this.observable$.subscribe(
         (data: any) => {
           this.contents = this.contents.concat(data.content);
           this.page++;
@@ -53,11 +59,17 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
   }
 
   filter() {
-    this.page = 0;
     this.nomeControl.pipe(debounceTime(500)).subscribe(nome => {
-      console.log(nome);
-      this.selectService.findByNome(nome).subscribe((data: any) => {
+      this.page = 0;
+      if (nome) {
+        this.observable$ = this.selectService.findByNome(nome, this.page);
+      } else {
+        this.observable$ = this.selectService.findAll(this.page);
+      }
+      this.observable$.subscribe((data: any) => {
         this.contents = data.content;
+        this.page++;
+        this.last = data.last;
       });
     });
   }

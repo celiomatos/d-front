@@ -1,8 +1,14 @@
 <mat-form-field appearance="outline">
   <mat-label>{{ label }}</mat-label>
   <mat-select multiple [formControl]="selectFormControl" (selectionChange)="onChange()">
-    <input matInput (keyup)="nomeControl.next($event.target.value)">
-    <mat-divider></mat-divider>
+    <!-- search: start -->
+    <mat-form-field appearance="standard" class="search">
+      <mat-label>Procurar...</mat-label>
+      <input matInput [formControl]="searchInput" (keyup)="nomeControl.next($event.target.value)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <!-- search: end -->
+    <!-- <mat-divider></mat-divider> -->
     <mat-option *ngFor="let content of contents" [value]="content.id" id="content-{{ contents.indexOf(content) }}">
       <span> {{ content.nome }} </span>
     </mat-option>

@@ -69,4 +69,16 @@ export class PagamentoListComponent implements OnInit {
       this.findPagamentos();
     });
   }
+
+  excel() {
+    const searchDto = new PagamentoSearch();
+    this.pagamentoService.excell(searchDto).subscribe(data => {
+      const file = new Blob([data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      });
+
+      const pdf = URL.createObjectURL(file);
+      window.location.href = pdf;
+    });
+  }
 }

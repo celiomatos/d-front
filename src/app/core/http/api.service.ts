@@ -17,7 +17,7 @@ export abstract class ApiService<T, D, S> {
   }
 
   search(search: S): Observable<D> {
-    return this.httpClient.post<D>(this.path() + '/search/', search);
+    return this.httpClient.post<D>(this.path() + 'search/', search);
   }
 
   findByNome(
@@ -42,12 +42,7 @@ export abstract class ApiService<T, D, S> {
     );
   }
 
-  findAll(
-    page: number = 0,
-    count: number = 5,
-    order: string = 'ASC',
-    sortProperty: string = 'nome'
-  ): Observable<D> {
+  findAll(page: number = 0, count: number = 5, order: string = 'ASC', sortProperty: string = 'nome'): Observable<D> {
     return this.httpClient.get<D>(
       this.path() +
         'find-all/' +
