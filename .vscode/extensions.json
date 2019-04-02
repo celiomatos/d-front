@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode",
+    "steoates.autoimport",
+    "formulahendry.auto-close-tag",
+    "msjsdiag.debugger-for-chrome",
+    "kisstkondoros.vscode-codemetrics",
+    "eamodio.gitlens",
+    "angular.ng-template",
+    "hardikpthv.angularmaterial",
+    "johnpapa.angular2",
+    "infinity1207.angular2-switcher",
+    "peterjausovec.vscode-docker",
+    "editorconfig.editorconfig",
+    "christian-kohler.path-intellisense",
+    "robinbentley.sass-indented",
+    "cssho.vscode-svgviewer",
+    "ghaschel.vscode-angular-html",
+    "vscode-icons-team.vscode-icons"
+  ]
+}
