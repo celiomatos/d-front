@@ -1,5 +1,6 @@
+import { LanguagePt } from './../../../locale/messages.pt';
 export class M6S {
-  private static messages = { NAME: 'Nome' };
+  private static messages = LanguagePt;
 
   static message(key: string, ...interpolations: string[]): string {
     let msg = this.messages[key];

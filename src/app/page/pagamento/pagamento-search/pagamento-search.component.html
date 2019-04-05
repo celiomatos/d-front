@@ -2,29 +2,39 @@
   <p>
     pagamento-search works!
   </p>
-  <div fxLayout="column" fxLayoutAlign="space-around center">
+  <div fxLayout="column" fxLayoutAlign="space-around start">
 
     <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px">
       <mat-form-field appearance="outline">
-        <mat-label>Data Final</mat-label>
-        <input matInput [matDatepicker]="picker1" formControlName="dataInicial" />
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+        <mat-label> {{ m6s.message('DATE_START') }} </mat-label>
+        <input matInput [matDatepicker]="pickerInicial" formControlName="dataInicial" />
+        <mat-datepicker-toggle matSuffix [for]="pickerInicial"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicial></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Data Final</mat-label>
-        <input matInput [matDatepicker]="picker2" formControlName="dataFinal" />
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
+        <mat-label> {{ m6s.message('DATE_END') }} </mat-label>
+        <input matInput [matDatepicker]="pickerFinal" formControlName="dataFinal" />
+        <mat-datepicker-toggle matSuffix [for]="pickerFinal"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFinal></mat-datepicker>
       </mat-form-field>
     </div>
-    <mat-form-field appearance="outline">
-      <mat-label>Valor Inicial</mat-label>
-      <input matInput type="number" formControlName="valorInicial" />
-    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px">
+      <mat-form-field appearance="outline">
+        <mat-label> {{ m6s.message('VALUE_START') }} </mat-label>
+        <input matInput type="number" formControlName="valorInicial" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label> {{ m6s.message('VALUE_END') }} </mat-label>
+        <input matInput type="number" formControlName="valorFinal" />
+      </mat-form-field>
+    </div>
+    <der-select-option [selectFormControl]="formValidation.controls['orgaos']" [selectService]="orgaoService"
+      [label]="m6s.message('ORGS')">
+    </der-select-option>
 
-    <der-select-option [selectFormControl]="formValidation.controls['orgaos']" [selectService]="orgaoService">
+    <der-select-option [selectFormControl]="formValidation.controls['orgaos']" [selectService]="orgaoService"
+      [label]="m6s.message('ORGS')">
     </der-select-option>
   </div>
 </form>

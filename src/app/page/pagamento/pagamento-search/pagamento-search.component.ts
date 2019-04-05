@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material';
 import { OrgaoService } from 'src/app/core/http/orgao.service';
 import { Orgao } from 'src/app/core/model/orgao.model';
 import { PagamentoSearch } from '../shared/pagamento.dto';
+import { M6S } from './../../../core/shared/messages';
 
 @Component({
   selector: 'der-pagamento-search',
@@ -11,6 +12,7 @@ import { PagamentoSearch } from '../shared/pagamento.dto';
   styleUrls: ['./pagamento-search.component.scss']
 })
 export class PagamentoSearchComponent implements OnInit {
+  m6s = M6S;
   formValidation: FormGroup;
   searchDto = new PagamentoSearch();
   orgaoList: Orgao[] = [];

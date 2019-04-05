@@ -3,13 +3,14 @@
   <mat-select multiple [formControl]="selectFormControl" (selectionChange)="onChange()">
     <!-- search: start -->
     <mat-form-field appearance="standard" class="search">
-      <mat-label>Procurar...</mat-label>
+      <mat-label>Buscar...</mat-label>
       <input matInput [formControl]="searchInput" (keyup)="nomeControl.next($event.target.value)">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
     <!-- search: end -->
     <!-- <mat-divider></mat-divider> -->
-    <mat-option *ngFor="let content of contents" [value]="content.id" id="content-{{ contents.indexOf(content) }}">
+    <mat-option *ngFor="let content of contents" [value]="content.id"
+      id="content-{{ contents.indexOf(content) }}">
       <span> {{ content.nome }} </span>
     </mat-option>
     <mat-divider></mat-divider>
@@ -18,6 +19,6 @@
     </span>
   </mat-select>
   <mat-error *ngIf="selectFormControl.hasError('required')">
-    <span> {{ m6s.message('NAME') }} </span>
+    <span> {{ m6s.message('MANDATORY') }} </span>
   </mat-error>
 </mat-form-field>
