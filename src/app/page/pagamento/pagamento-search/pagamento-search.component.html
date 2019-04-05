@@ -3,16 +3,25 @@
     pagamento-search works!
   </p>
   <div fxLayout="column" fxLayoutAlign="space-around center">
-    <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dataInicial" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
 
+    <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px">
+      <mat-form-field appearance="outline">
+        <mat-label>Data Final</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dataInicial" />
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data Final</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="dataFinal" />
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput type="number" placeholder="Favorite food" />
+      <mat-label>Valor Inicial</mat-label>
+      <input matInput type="number" formControlName="valorInicial" />
     </mat-form-field>
 
     <der-select-option [selectFormControl]="formValidation.controls['orgaos']" [selectService]="orgaoService">

@@ -1,8 +1,11 @@
-<p>
-  menu no works! KL POPOP POP >>>>
-</p>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a (click)="closeSideNav()" [routerLink]="['/pagamento']" mat-button>Pagamento</a>
 
-<p>
-  menu no works!
-</p>
-<a (click)="closeSideNav()" [routerLink]="['/pagamento']">Pagamento</a>
+  </mat-expansion-panel>
+</mat-accordion>

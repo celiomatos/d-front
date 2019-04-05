@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { OrgaoService } from 'src/app/core/http/orgao.service';
 import { Orgao } from 'src/app/core/model/orgao.model';
@@ -23,7 +23,10 @@ export class PagamentoSearchComponent implements OnInit {
   ngOnInit() {
     this.formValidation = new FormGroup({
       orgaos: new FormControl([]),
-      dataInicial: new FormControl()
+      dataInicial: new FormControl(),
+      dataFinal: new FormControl(),
+      valorInicial: new FormControl('', [Validators.max(2147483647)]),
+      valorFinal: new FormControl('', [Validators.max(2147483647)])
     });
     this.paginated();
   }

@@ -5,7 +5,7 @@
   },
   "editor.renderWhitespace": "all",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "prettier.printWidth": 120,
-  "html.format.wrapLineLength": 120,
+  "prettier.printWidth": 110,
+  "html.format.wrapLineLength": 110,
   "html.format.wrapAttributes": "auto"
 }
