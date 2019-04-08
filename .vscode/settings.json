@@ -3,10 +3,12 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
+  "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "prettier.printWidth": 110,
   "prettier.singleQuote": true,
+  "prettier.printWidth": 110,
   "html.format.wrapLineLength": 110,
-  "html.format.wrapAttributes": "auto"
+  "html.format.wrapAttributes": "auto",
+  "codemetrics.basics.ComplexityLevelNormal": 10
 }

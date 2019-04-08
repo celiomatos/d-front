@@ -41,15 +41,6 @@ export class PagamentoListComponent implements OnInit {
     );
   }
 
-  changePageSize(value: number) {
-    this.page = 0;
-    this.size = value;
-    this.paginator.pageIndex = 0;
-    this.dataSource.data = [];
-    this.totalElements = 0;
-    this.findPagamentos();
-  }
-
   changePage(event: PageEvent) {
     this.page = Math.ceil(this.dataSource.data.length / this.size - 1);
     if (this.page < event.pageIndex) {
@@ -66,6 +57,7 @@ export class PagamentoListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.searchDto = dialogRef.componentInstance.searchDto;
       if (this.searchDto !== null) {
+        this.page = 0;
         this.dataSource.data = [];
         this.findPagamentos();
       }

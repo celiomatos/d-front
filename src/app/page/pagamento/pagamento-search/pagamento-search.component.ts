@@ -45,10 +45,15 @@ export class PagamentoSearchComponent implements OnInit {
   }
 
   search() {
-    console.log(this.formValidation.get('dataInicial').value);
     this.searchDto = new PagamentoSearch();
     this.searchDto.dataInicial = this.formValidation.get('dataInicial').value;
+    this.searchDto.dataFinal = this.formValidation.get('dataFinal').value;
+    this.searchDto.valorInicial = this.formValidation.get('valorInicial').value;
+    this.searchDto.valorFinal = this.formValidation.get('valorFinal').value;
     this.searchDto.orgaos = this.formValidation.get('orgaos').value;
+    this.searchDto.fontes = this.formValidation.get('fontes').value;
+    this.searchDto.classificacoes = this.formValidation.get('classificacoes').value;
+    this.searchDto.credores = this.formValidation.get('credores').value;
     this.dialogRef.close();
   }
 }
