@@ -6,5 +6,8 @@ export enum LanguagePt {
   VALUE_START = 'Valor Inicial',
   VALUE_END = 'Valor Final',
   ORGS = 'Órgãos',
-  MANDATORY = 'Campo obrigatório'
+  MANDATORY = 'Campo obrigatório',
+  FONTES = 'Fontes',
+  CLASSIFICACOES = 'Classificações',
+  CREDORES = 'Credores'
 }

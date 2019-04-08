@@ -64,9 +64,11 @@ export class PagamentoListComponent implements OnInit {
       disableClose: true
     });
     dialogRef.afterClosed().subscribe(() => {
-      console.log('nada');
       this.searchDto = dialogRef.componentInstance.searchDto;
-      this.findPagamentos();
+      if (this.searchDto !== null) {
+        this.dataSource.data = [];
+        this.findPagamentos();
+      }
     });
   }
 

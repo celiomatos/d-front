@@ -13,7 +13,7 @@ export class ApiInterceptor implements HttpInterceptor {
   }
 
   private getHeader() {
-    const token = 'c3ada026-bd9f-4519-a66b-d4036b19736f';
+    const token = '835b0bf0-8299-41f7-8f21-34ba99747065'; //'c3ada026-bd9f-4519-a66b-d4036b19736f';
 
     if (token) {
       return {

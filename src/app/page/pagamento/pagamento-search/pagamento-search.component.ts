@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { OrgaoService } from 'src/app/core/http/orgao.service';
-import { Orgao } from 'src/app/core/model/orgao.model';
 import { PagamentoSearch } from '../shared/pagamento.dto';
+import { ClassificacaoService } from './../../../core/http/classificacao.service';
+import { CredorService } from './../../../core/http/credor.service';
+import { FonteService } from './../../../core/http/fonte.service';
 import { M6S } from './../../../core/shared/messages';
 
 @Component({
@@ -14,46 +16,37 @@ import { M6S } from './../../../core/shared/messages';
 export class PagamentoSearchComponent implements OnInit {
   m6s = M6S;
   formValidation: FormGroup;
-  searchDto = new PagamentoSearch();
-  orgaoList: Orgao[] = [];
+  searchDto: PagamentoSearch;
 
-  page = 0;
-  last = false;
-
-  constructor(private dialogRef: MatDialogRef<PagamentoSearchComponent>, public orgaoService: OrgaoService) {}
+  constructor(
+    private dialogRef: MatDialogRef<PagamentoSearchComponent>,
+    public orgaoService: OrgaoService,
+    public fonteService: FonteService,
+    public classificacaoService: ClassificacaoService,
+    public credorService: CredorService
+  ) {}
 
   ngOnInit() {
     this.formValidation = new FormGroup({
       orgaos: new FormControl([]),
+      fontes: new FormControl([]),
+      classificacoes: new FormControl([]),
+      credores: new FormControl([]),
       dataInicial: new FormControl(),
       dataFinal: new FormControl(),
       valorInicial: new FormControl('', [Validators.max(2147483647)]),
       valorFinal: new FormControl('', [Validators.max(2147483647)])
     });
-    this.paginated();
   }
 
-  loadNext() {
-    this.paginated();
-  }
-
-  paginated() {
-    if (!this.last) {
-      this.orgaoService.findAll(this.page).subscribe(
-        (data: any) => {
-          this.orgaoList = this.orgaoList.concat(data.content);
-          this.page++;
-          this.last = data.last;
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
-    }
+  cancelar() {
+    this.searchDto = null;
+    this.dialogRef.close();
   }
 
   search() {
     console.log(this.formValidation.get('dataInicial').value);
+    this.searchDto = new PagamentoSearch();
     this.searchDto.dataInicial = this.formValidation.get('dataInicial').value;
     this.searchDto.orgaos = this.formValidation.get('orgaos').value;
     this.dialogRef.close();

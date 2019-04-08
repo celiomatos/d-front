@@ -6,6 +6,9 @@ import { OrgaoService } from 'src/app/core/http/orgao.service';
 import { MaterialModule } from 'src/app/core/shared/material.module';
 import { SelectOptionComponent } from 'src/app/core/shared/select-option/select-option.component';
 import { TopFiveOrgaosComponent } from 'src/app/core/shared/top-five-orgaos/top-five-orgaos.component';
+import { ClassificacaoService } from './../../core/http/classificacao.service';
+import { CredorService } from './../../core/http/credor.service';
+import { FonteService } from './../../core/http/fonte.service';
 import { PagamentoListComponent } from './pagamento-list/pagamento-list.component';
 import { PagamentoSearchComponent } from './pagamento-search/pagamento-search.component';
 import { PagamentoService } from './shared/pagamento.service';
@@ -18,10 +21,15 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [PagamentoListComponent, PagamentoSearchComponent, TopFiveOrgaosComponent, SelectOptionComponent],
+  declarations: [
+    PagamentoListComponent,
+    PagamentoSearchComponent,
+    TopFiveOrgaosComponent,
+    SelectOptionComponent
+  ],
   exports: [TopFiveOrgaosComponent, FormsModule, ReactiveFormsModule],
   entryComponents: [PagamentoSearchComponent],
-  providers: [PagamentoService, OrgaoService],
+  providers: [PagamentoService, OrgaoService, FonteService, ClassificacaoService, CredorService],
   imports: [CommonModule, RouterModule.forChild(ROUTES), MaterialModule, FormsModule, ReactiveFormsModule]
 })
 export class PagamentoModule {}
