@@ -25,30 +25,18 @@
         <input matInput type="number" formControlName="valorFinal" />
       </mat-form-field>
     </div>
-    <der-select-option
-      [selectFormControl]="formValidation.controls['orgaos']"
-      [selectService]="orgaoService"
-      [label]="m6s.message('ORGS')"
-    >
+    <der-select-option [selectFormControl]="formValidation.controls['orgaos']" [selectService]="orgaoService"
+      [label]="m6s.message('ORGS')">
     </der-select-option>
 
-    <der-select-option
-      [selectFormControl]="formValidation.controls['fontes']"
-      [selectService]="fonteService"
-      [label]="m6s.message('FONTES')"
-    >
+    <der-select-option [selectFormControl]="formValidation.controls['fontes']" [selectService]="fonteService"
+      [label]="m6s.message('FONTES')">
     </der-select-option>
-    <der-select-option
-      [selectFormControl]="formValidation.controls['classificacoes']"
-      [selectService]="classificacaoService"
-      [label]="m6s.message('CLASSIFICACOES')"
-    >
+    <der-select-option [selectFormControl]="formValidation.controls['classificacoes']"
+      [selectService]="classificacaoService" [label]="m6s.message('CLASSIFICACOES')">
     </der-select-option>
-    <der-select-option
-      [selectFormControl]="formValidation.controls['credores']"
-      [selectService]="credorService"
-      [label]="m6s.message('CREDORES')"
-    >
+    <der-select-option [selectFormControl]="formValidation.controls['credores']"
+      [selectService]="credorService" [label]="m6s.message('CREDORES')">
     </der-select-option>
   </div>
 </form>

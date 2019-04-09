@@ -1,0 +1,21 @@
+<div class="login" fxLayout="column" fxLayoutAlign="center center">
+  <form [formGroup]="formValidation">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
+          <mat-form-field appearance="outline">
+            <mat-label> {{ m6s.message('USER') }} </mat-label>
+            <input matInput formControlName="user" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ m6s.message('PASSWORD') }} </mat-label>
+            <input matInput type="password" formControlName="senha" />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-button id="btlogin" (click)="login()">Entrar</button>
+      </mat-card-footer>
+    </mat-card>
+  </form>
+</div>

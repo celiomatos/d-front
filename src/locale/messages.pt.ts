@@ -9,5 +9,7 @@ export enum LanguagePt {
   MANDATORY = 'Campo obrigatório',
   FONTES = 'Fontes',
   CLASSIFICACOES = 'Classificações',
-  CREDORES = 'Credores'
+  CREDORES = 'Credores',
+  USER = 'Usuário',
+  PASSWORD = 'Senha'
 }

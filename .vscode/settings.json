@@ -7,8 +7,8 @@
   "editor.renderWhitespace": "all",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "prettier.singleQuote": true,
-  "prettier.printWidth": 110,
-  "html.format.wrapLineLength": 110,
+  "prettier.printWidth": 120,
+  "html.format.wrapLineLength": 120,
   "html.format.wrapAttributes": "auto",
   "codemetrics.basics.ComplexityLevelNormal": 10
 }

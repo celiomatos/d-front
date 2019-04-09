@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/http/api.service';
-import { Page } from '../shared/page';
-import { Fonte } from './../model/fonte.model';
+import { Page } from 'src/app/shared/page';
+import { Fonte } from './fonte.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class FonteService extends ApiService<Fonte, Page<Fonte>, null> {
   protected path(): string {
     return this.basePath() + 'fontes/';

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
+
+  constructor() { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const req = request.clone({
       setHeaders: this.getHeader()
@@ -13,11 +15,11 @@ export class ApiInterceptor implements HttpInterceptor {
   }
 
   private getHeader() {
-    const token = '835b0bf0-8299-41f7-8f21-34ba99747065'; //'835b0bf0-8299-41f7-8f21-34ba99747065';
+    const accessToken = sessionStorage.getItem('access_token');
 
-    if (token) {
+    if (accessToken) {
       return {
-        Authorization: 'bearer ' + token,
+        Authorization: 'bearer ' + accessToken,
         'Content-Type': 'application/json'
       };
     } else {

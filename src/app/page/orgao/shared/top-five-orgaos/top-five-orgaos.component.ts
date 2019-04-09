@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { TopFiveOrgaos } from '../../dto/top-five-orgaos.dto';
-import { OrgaoService } from '../../http/orgao.service';
+import { OrgaoService } from '../orgao.service';
+import { TopFiveOrgaos } from './../top-five-orgaos.model';
+
 
 @Component({
   selector: 'der-top-five-orgaos',
@@ -14,7 +15,7 @@ export class TopFiveOrgaosComponent implements OnInit {
   dataChart: string[] = [];
   labelChart: string[] = [];
 
-  constructor(private orgaoService: OrgaoService) {}
+  constructor(private orgaoService: OrgaoService) { }
 
   ngOnInit() {
     this.init();
@@ -75,11 +76,11 @@ export class TopFiveOrgaosComponent implements OnInit {
       options: {
         tooltips: {
           callbacks: {
-            title: function(tooltipItem: any, data: any) {
+            title: function (tooltipItem: any, data: any) {
               const value = data['labels'][tooltipItem[0]['index']];
               return value.substring(value.indexOf('-') + 1);
             },
-            label: function(tooltipItem: any) {
+            label: function (tooltipItem: any) {
               return tooltipItem.yLabel.toLocaleString('pt-BR');
             }
           }
@@ -88,7 +89,7 @@ export class TopFiveOrgaosComponent implements OnInit {
           xAxes: [
             {
               ticks: {
-                userCallback: function(value: any) {
+                userCallback: function (value: any) {
                   return value.substring(0, value.indexOf('-'));
                 }
               }
