@@ -19,7 +19,7 @@
   <ng-container matColumnDef="data">
     <th mat-header-cell *matHeaderCellDef>Data</th>
     <td mat-cell *matCellDef="let pagamento">
-      <p>{{ pagamento.data }}</p>
+      <p>{{ pagamento.data | date }}</p>
     </td>
   </ng-container>
   <!-- valor -->

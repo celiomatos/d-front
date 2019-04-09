@@ -30,6 +30,16 @@ export class PagamentoListComponent implements OnInit {
   findPagamentos() {
     this.searchDto.page = this.page;
     this.searchDto.size = this.size;
+
+    console.log(this.searchDto.dataInicial);
+    console.log(this.searchDto.dataFinal);
+    console.log(this.searchDto.valorInicial);
+    console.log(this.searchDto.valorFinal);
+    console.log(this.searchDto.orgaos);
+    console.log(this.searchDto.fontes);
+    console.log(this.searchDto.classificacoes);
+    console.log(this.searchDto.credores);
+
     this.pagamentoService.search(this.searchDto).subscribe(
       data => {
         this.dataSource.data = this.dataSource.data.concat(data.content);
@@ -58,6 +68,7 @@ export class PagamentoListComponent implements OnInit {
       this.searchDto = dialogRef.componentInstance.searchDto;
       if (this.searchDto !== null) {
         this.page = 0;
+        this.totalElements = 0;
         this.dataSource.data = [];
         this.findPagamentos();
       }
