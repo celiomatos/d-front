@@ -76,7 +76,7 @@ export class PagamentoListComponent implements OnInit {
   }
 
   excel() {
-    const searchDto = new PagamentoSearch();
+    const searchDto = this.searchDto;
     this.pagamentoService.excell(searchDto).subscribe(data => {
       const file = new Blob([data], {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
