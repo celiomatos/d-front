@@ -19,14 +19,14 @@
   <ng-container matColumnDef="data">
     <th mat-header-cell *matHeaderCellDef>Data</th>
     <td mat-cell *matCellDef="let pagamento">
-      <p>{{ pagamento.data | date }}</p>
+      <p>{{ pagamento.data | date: 'dd/MM/yyyy' }}</p>
     </td>
   </ng-container>
   <!-- valor -->
   <ng-container matColumnDef="valor">
     <th mat-header-cell *matHeaderCellDef>Valor</th>
     <td mat-cell *matCellDef="let pagamento">
-      <p>{{ pagamento.valor }}</p>
+      <p>{{ pagamento.valor | currency:'BRL':true }}</p>
     </td>
   </ng-container>
   <!-- nrob -->

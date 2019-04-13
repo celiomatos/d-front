@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
-import { OrgaoService } from 'src/app/core/http/orgao.service';
+import { OrgaoService } from 'src/app/page/orgao/shared/orgao.service';
+import { M6S } from '../../../shared/messages';
+import { ClassificacaoService } from '../../classificacao/shared/classificacao.service';
+import { CredorService } from '../../credor/shared/credor.service';
+import { FonteService } from '../../fonte/shared/fonte.service';
 import { PagamentoSearch } from '../shared/pagamento.dto';
-import { ClassificacaoService } from './../../../core/http/classificacao.service';
-import { CredorService } from './../../../core/http/credor.service';
-import { FonteService } from './../../../core/http/fonte.service';
-import { M6S } from './../../../core/shared/messages';
 
 @Component({
   selector: 'der-pagamento-search',
@@ -24,7 +24,7 @@ export class PagamentoSearchComponent implements OnInit {
     public fonteService: FonteService,
     public classificacaoService: ClassificacaoService,
     public credorService: CredorService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.formValidation = new FormGroup({

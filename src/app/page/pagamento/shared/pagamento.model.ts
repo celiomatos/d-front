@@ -1,7 +1,7 @@
-import { Credor } from 'src/app/core/model/credor.model';
-import { Classificacao } from 'src/app/core/model/classificacao.model';
-import { Fonte } from 'src/app/core/model/fonte.model';
-import { Orgao } from 'src/app/core/model/orgao.model';
+import { Classificacao } from 'src/app/page/classificacao/shared/classificacao.model';
+import { Credor } from 'src/app/page/credor/shared/credor.model';
+import { Fonte } from 'src/app/page/fonte/shared/fonte.model';
+import { Orgao } from 'src/app/page/orgao/shared/orgao.model';
 
 export class Pagamento {
   id: number;

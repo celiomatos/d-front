@@ -1,4 +1,4 @@
-import { LanguagePt } from './../../../locale/messages.pt';
+import { LanguagePt } from '../../locale/messages.pt';
 export class M6S {
   private static messages = LanguagePt;
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8084/'
+  apiUrl: 'http://localhost:8084/',
+  authUrl: 'http://localhost:8081/oauth/token'
 };
 
 /*

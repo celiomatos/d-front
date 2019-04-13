@@ -2,12 +2,12 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/http/api.service';
+import { Orgao } from 'src/app/page/orgao/shared/orgao.model';
 import { PagamentoSearch } from 'src/app/page/pagamento/shared/pagamento.dto';
-import { TopFiveOrgaos } from '../dto/top-five-orgaos.dto';
-import { Orgao } from '../model/orgao.model';
-import { Page } from '../shared/page';
+import { Page } from 'src/app/shared/page';
+import { TopFiveOrgaos } from './top-five-orgaos.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class OrgaoService extends ApiService<Orgao, Page<Orgao>, PagamentoSearch> {
   protected path(): string {
     return this.basePath() + 'orgaos/';
