@@ -1,5 +1,15 @@
-<button mat-button (click)="search()">Pesquisar</button>
-<button mat-button (click)="excel()">Excel</button>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div>
+    <button mat-button (click)="search()">Pesquisar</button>
+    <button mat-button (click)="excel()">Excel</button>
+  </div>
+  <mat-card>
+    <div fxLayout="column" fxLayoutAlign="center end">
+      <span>Total</span>
+      <span> {{ totalValor | currency: 'BRL':true }} </span>
+    </div>
+  </mat-card>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- orgao -->
   <ng-container matColumnDef="orgao">
@@ -26,7 +36,7 @@
   <ng-container matColumnDef="valor">
     <th mat-header-cell *matHeaderCellDef>Valor</th>
     <td mat-cell *matCellDef="let pagamento">
-      <p>{{ pagamento.valor | currency:'BRL':true }}</p>
+      <p>{{ pagamento.valor | currency: 'BRL':true }}</p>
     </td>
   </ng-container>
   <!-- nrob -->

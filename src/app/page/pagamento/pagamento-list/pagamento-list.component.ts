@@ -16,6 +16,7 @@ export class PagamentoListComponent implements OnInit {
   page = 0;
   size = 5;
   totalElements = 0;
+  totalValor = 0;
   searchDto = new PagamentoSearch();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,15 +31,6 @@ export class PagamentoListComponent implements OnInit {
   findPagamentos() {
     this.searchDto.page = this.page;
     this.searchDto.size = this.size;
-
-    console.log(this.searchDto.dataInicial);
-    console.log(this.searchDto.dataFinal);
-    console.log(this.searchDto.valorInicial);
-    console.log(this.searchDto.valorFinal);
-    console.log(this.searchDto.orgaos);
-    console.log(this.searchDto.fontes);
-    console.log(this.searchDto.classificacoes);
-    console.log(this.searchDto.credores);
 
     this.pagamentoService.search(this.searchDto).subscribe(
       data => {
@@ -71,19 +63,25 @@ export class PagamentoListComponent implements OnInit {
         this.totalElements = 0;
         this.dataSource.data = [];
         this.findPagamentos();
+        this.sumValor();
       }
     });
   }
 
   excel() {
-    const searchDto = this.searchDto;
-    this.pagamentoService.excell(searchDto).subscribe(data => {
+    this.pagamentoService.excell(this.searchDto).subscribe(data => {
       const file = new Blob([data], {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       });
 
       const pdf = URL.createObjectURL(file);
       window.location.href = pdf;
+    });
+  }
+
+  sumValor() {
+    this.pagamentoService.sumPagamentoValor(this.searchDto).subscribe(value => {
+      this.totalValor = value;
     });
   }
 }

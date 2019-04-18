@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/http/api.service';
 import { Page } from 'src/app/shared/page';
 import { PagamentoSearch } from './pagamento.dto';
@@ -18,5 +19,9 @@ export class PagamentoService extends ApiService<Pagamento, Page<Pagamento>, Pag
       headers: headers,
       responseType: 'blob'
     });
+  }
+
+  sumPagamentoValor(search: PagamentoSearch): Observable<number> {
+    return this.httpClient.post<number>(this.path() + 'sum-pagamento-valor/', search);
   }
 }
