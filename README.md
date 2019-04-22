@@ -30,3 +30,6 @@ https://material.angular.io/components/categories
 https://tburleson-layouts-demos.firebaseapp.com/#/docs
 https://www.chartjs.org/
 https://yarnpkg.com/pt-BR/
+
+docker build --rm -t test-application:latest .
+docker run --rm -d -p 90:80/tcp test-application:latest
