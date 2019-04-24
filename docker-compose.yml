@@ -16,6 +16,7 @@ services:
   d-server-auth:
     build: docker-files/docker_auth
     container_name: d_auth
+    restart: always
     ports:
       - '8081:8081'
     networks:
@@ -25,6 +26,7 @@ services:
   d-server-schedule:
     build: docker-files/docker_schedule
     container_name: d_schedule
+    restart: always
     ports:
       - '8082:8082'
     networks:
@@ -36,6 +38,7 @@ services:
   d-server-scraper:
     build: docker-files/docker_scraper
     container_name: d_scraper
+    restart: always
     ports:
       - '8083:8083'
     networks:
@@ -46,6 +49,7 @@ services:
   d-server-main:
     build: docker-files/docker_main
     container_name: d_main
+    restart: always
     ports:
       - '8084:8084'
     networks:
@@ -56,8 +60,9 @@ services:
   d-front:
     build: docker-files/docker_front
     container_name: d_front
+    restart: always
     ports:
-      - '80:80'
+      - '90:80'
     networks:
       - d_network
     depends_on:

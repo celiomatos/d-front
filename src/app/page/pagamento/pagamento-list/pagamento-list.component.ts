@@ -74,8 +74,7 @@ export class PagamentoListComponent implements OnInit {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       });
 
-      const pdf = URL.createObjectURL(file);
-      window.location.href = pdf;
+      location.href = URL.createObjectURL(file);
     });
   }
 
