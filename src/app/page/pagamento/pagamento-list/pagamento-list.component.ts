@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
+import { saveAs } from 'file-saver';
 import { PagamentoSearch } from '../shared/pagamento.dto';
 import { Pagamento } from '../shared/pagamento.model';
 import { PagamentoService } from '../shared/pagamento.service';
 import { PagamentoSearchComponent } from './../pagamento-search/pagamento-search.component';
+
 
 @Component({
   selector: 'der-pagamento-list',
@@ -21,7 +23,7 @@ export class PagamentoListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) {}
+  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -70,11 +72,12 @@ export class PagamentoListComponent implements OnInit {
 
   excel() {
     this.pagamentoService.excell(this.searchDto).subscribe(data => {
-      const file = new Blob([data], {
-        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      });
+      // const file = new Blob([data], {
+      //   type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      // });
 
-      location.href = URL.createObjectURL(file);
+      // location.href = URL.createObjectURL(file);
+      this.saveToFileSystem(data);
     });
   }
 
@@ -82,5 +85,15 @@ export class PagamentoListComponent implements OnInit {
     this.pagamentoService.sumPagamentoValor(this.searchDto).subscribe(value => {
       this.totalValor = value;
     });
+  }
+
+  private saveToFileSystem(data: any) {
+    // const contentDispositionHeader: string = response.headers.get('Content-Disposition');
+    // const parts: string[] = contentDispositionHeader.split(';');
+    const filename = 'pagamentos.xlsx';
+    const blob = new Blob([data], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    });
+    saveAs(blob, filename);
   }
 }
