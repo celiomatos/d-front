@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from 'src/app/core/http/api.service';
+import { ApiService } from 'src/app/core/services/api.service';
 import { Page } from 'src/app/shared/page';
 import { Classificacao } from './classificacao.model';
 

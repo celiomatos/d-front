@@ -1,7 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from 'src/app/core/http/api.service';
+import { ApiService } from 'src/app/core/services/api.service';
 import { Page } from 'src/app/shared/page';
 import { PagamentoSearch } from './pagamento.dto';
 import { Pagamento } from './pagamento.model';

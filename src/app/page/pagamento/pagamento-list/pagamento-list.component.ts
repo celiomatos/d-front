@@ -6,7 +6,6 @@ import { Pagamento } from '../shared/pagamento.model';
 import { PagamentoService } from '../shared/pagamento.service';
 import { PagamentoSearchComponent } from './../pagamento-search/pagamento-search.component';
 
-
 @Component({
   selector: 'der-pagamento-list',
   templateUrl: './pagamento-list.component.html',
@@ -16,14 +15,14 @@ export class PagamentoListComponent implements OnInit {
   tableColumns = ['orgao', 'credor', 'data', 'valor', 'nrob', 'nrnl', 'nrne', 'fonte', 'classificacao'];
   dataSource = new MatTableDataSource<Pagamento>();
   page = 0;
-  size = 5;
+  size = 10;
   totalElements = 0;
   totalValor = 0;
   searchDto = new PagamentoSearch();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) { }
+  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) {}
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -72,11 +71,6 @@ export class PagamentoListComponent implements OnInit {
 
   excel() {
     this.pagamentoService.excell(this.searchDto).subscribe(data => {
-      // const file = new Blob([data], {
-      //   type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      // });
-
-      // location.href = URL.createObjectURL(file);
       this.saveToFileSystem(data);
     });
   }
@@ -88,8 +82,6 @@ export class PagamentoListComponent implements OnInit {
   }
 
   private saveToFileSystem(data: any) {
-    // const contentDispositionHeader: string = response.headers.get('Content-Disposition');
-    // const parts: string[] = contentDispositionHeader.split(';');
     const filename = 'pagamentos.xlsx';
     const blob = new Blob([data], {
       type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'

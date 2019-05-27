@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from './core/guard/auth-guard.service';
+import { AuthGuard } from './core/guards/auth-guard.guard';
 import { HomeComponent } from './page/home/home/home.component';
 import { LoginComponent } from './page/login/login.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'pagamento',
@@ -27,4 +27,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

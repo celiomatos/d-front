@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { M6S } from '../messages';
+import { M6S } from '../../messages';
 
 @Component({
   selector: 'der-select-option',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './../../core/http/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 import { M6S } from './../../shared/messages';
 
 @Component({
@@ -10,10 +10,9 @@ import { M6S } from './../../shared/messages';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   m6s = M6S;
   formValidation: FormGroup;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.formValidation = new FormGroup({
@@ -35,5 +34,4 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
 }
