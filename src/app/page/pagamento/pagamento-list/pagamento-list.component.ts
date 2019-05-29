@@ -15,14 +15,14 @@ export class PagamentoListComponent implements OnInit {
   tableColumns = ['orgao', 'credor', 'data', 'valor', 'nrob', 'nrnl', 'nrne', 'fonte', 'classificacao'];
   dataSource = new MatTableDataSource<Pagamento>();
   page = 0;
-  size = 10;
+  size = 5;
   totalElements = 0;
   totalValor = 0;
   searchDto = new PagamentoSearch();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) {}
+  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -70,9 +70,13 @@ export class PagamentoListComponent implements OnInit {
   }
 
   excel() {
-    this.pagamentoService.excell(this.searchDto).subscribe(data => {
-      this.saveToFileSystem(data);
-    });
+    if (this.totalElements > 1000) {
+      console.log('maior que 1000');
+    } else {
+      this.pagamentoService.excell(this.searchDto).subscribe(data => {
+        this.saveToFileSystem(data);
+      });
+    }
   }
 
   sumValor() {

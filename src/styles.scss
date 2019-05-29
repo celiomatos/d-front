@@ -12,3 +12,11 @@ body {
 table {
   width: 100%;
 }
+
+.mat-icon {
+  cursor: pointer;
+}
+
+.mat-row:hover {
+  background-color: #dfdfdf;
+}

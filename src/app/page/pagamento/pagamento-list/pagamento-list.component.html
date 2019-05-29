@@ -1,12 +1,12 @@
-<div fxLayout="row" fxLayoutAlign="space-between center">
+<div fxLayout="row" fxLayoutAlign="space-between center" class="div-header">
   <div>
     <button mat-button (click)="search()">Pesquisar</button>
     <button mat-button (click)="excel()">Excel</button>
   </div>
-  <mat-card>
+  <mat-card class="card-valor">
     <div fxLayout="column" fxLayoutAlign="center end">
       <span>Total</span>
-      <span> {{ totalValor | currency: 'BRL':true }} </span>
+      <span class="valor-card"> {{ totalValor | currency: 'BRL':'symbol' }} </span>
     </div>
   </mat-card>
 </div>
@@ -36,7 +36,7 @@
   <ng-container matColumnDef="valor">
     <th mat-header-cell *matHeaderCellDef>Valor</th>
     <td mat-cell *matCellDef="let pagamento">
-      <p>{{ pagamento.valor | currency: 'BRL':true }}</p>
+      <p>{{ pagamento.valor | currency: 'BRL':'symbol' }}</p>
     </td>
   </ng-container>
   <!-- nrob -->
@@ -78,4 +78,4 @@
   <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
 </table>
 
-<mat-paginator [length]="totalElements" [pageSizeOptions]="[5]" (page)="changePage($event)"> </mat-paginator>
+<mat-paginator [length]="totalElements" [pageSizeOptions]="[size]" (page)="changePage($event)"></mat-paginator>

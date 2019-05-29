@@ -23,7 +23,7 @@ export class SelectOptionComponent implements OnInit, OnDestroy {
   nomeControl = new Subject<string>();
   observable$ = new Observable<any>();
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.loadNext();

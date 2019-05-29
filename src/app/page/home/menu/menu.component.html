@@ -2,10 +2,16 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Personal data
+        Rastreio
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <a (click)="closeSideNav()" [routerLink]="['/pagamento']" mat-button>Pagamento</a>
-    <a (click)="closeSideNav()" [routerLink]="['/login']" mat-button>Login</a>
+    <div fxLayout="column" fxLayoutAlign="space-between stretch">
+      <a (click)="closeSideNav()" [routerLink]="['/pagamento']" mat-button>
+        Pagamento
+      </a>
+      <a (click)="closeSideNav()" [routerLink]="['/login']" mat-button>
+        Logout
+      </a>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
