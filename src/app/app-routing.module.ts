@@ -15,6 +15,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
+        path: '',
+        loadChildren: '../app/page/dashboard/dashboard.module#DashboardModule'
+      },
+      {
         path: 'pagamento',
         loadChildren: '../app/page/pagamento/pagamento.module#PagamentoModule'
       }
@@ -27,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

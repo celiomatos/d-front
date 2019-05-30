@@ -9,7 +9,14 @@ import { SelectOptionComponent } from './components/select-option/select-option.
 import { MaterialModule } from './material.module';
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule, HomeModule, FormsModule, MaterialModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    HomeModule,
+    FormsModule,
+    MaterialModule,
+    ReactiveFormsModule
+  ],
   exports: [
     CommonModule,
     HttpClientModule,
@@ -17,9 +24,10 @@ import { MaterialModule } from './material.module';
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
-    SelectOptionComponent
+    SelectOptionComponent,
+    TopFiveOrgaosComponent
   ],
   providers: [AuthService],
   declarations: [SelectOptionComponent, TopFiveOrgaosComponent]
 })
-export class SharedModule {}
+export class SharedModule { }

@@ -1,17 +1,16 @@
 <mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Rastreio
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div fxLayout="column" fxLayoutAlign="space-between stretch">
-      <a (click)="closeSideNav()" [routerLink]="['/pagamento']" mat-button>
-        Pagamento
-      </a>
-      <a (click)="closeSideNav()" [routerLink]="['/login']" mat-button>
-        Logout
-      </a>
-    </div>
-  </mat-expansion-panel>
+  <div fxLayout="column" fxLayoutAlign="space-around stretch" class="d-menu">
+    <a (click)="closeSideNav()" [routerLink]="['/dashboard']" mat-button>
+      <mat-icon>home</mat-icon>
+      <span>Dashboard</span>
+    </a>
+    <a (click)="closeSideNav()" [routerLink]="['/pagamento']" mat-button>
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Pagamento</span>
+    </a>
+    <a (click)="closeSideNav()" [routerLink]="['/login']" mat-button>
+      <mat-icon>delete</mat-icon>
+      <span>Logout</span>
+    </a>
+  </div>
 </mat-accordion>
