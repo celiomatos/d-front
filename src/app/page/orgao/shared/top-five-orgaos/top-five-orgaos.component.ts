@@ -21,7 +21,7 @@ export class TopFiveOrgaosComponent implements OnInit {
     this.init();
     setTimeout(() => {
       this.initChart();
-    }, 500);
+    }, 1000);
   }
 
   init() {

@@ -3,8 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../core/services/auth.service';
+import { TopFiveCredoresComponent } from '../page/credor/shared/top-five-credores/top-five-credores.component';
 import { HomeModule } from '../page/home/home.module';
 import { TopFiveOrgaosComponent } from '../page/orgao/shared/top-five-orgaos/top-five-orgaos.component';
+import { FiveYearsPagamentosComponent } from '../page/pagamento/shared/five-years-pagamentos/five-years-pagamentos.component';
 import { SelectOptionComponent } from './components/select-option/select-option.component';
 import { MaterialModule } from './material.module';
 
@@ -25,9 +27,16 @@ import { MaterialModule } from './material.module';
     MaterialModule,
     ReactiveFormsModule,
     SelectOptionComponent,
-    TopFiveOrgaosComponent
+    TopFiveOrgaosComponent,
+    TopFiveCredoresComponent,
+    FiveYearsPagamentosComponent
   ],
   providers: [AuthService],
-  declarations: [SelectOptionComponent, TopFiveOrgaosComponent]
+  declarations: [
+    SelectOptionComponent,
+    TopFiveOrgaosComponent,
+    TopFiveCredoresComponent,
+    FiveYearsPagamentosComponent
+  ]
 })
 export class SharedModule { }

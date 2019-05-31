@@ -15,6 +15,7 @@ const ROUTES: Routes = [
   declarations: [
     PagamentoListComponent,
     PagamentoSearchComponent
+
   ],
   entryComponents: [PagamentoSearchComponent],
   imports: [RouterModule.forChild(ROUTES), SharedModule]
