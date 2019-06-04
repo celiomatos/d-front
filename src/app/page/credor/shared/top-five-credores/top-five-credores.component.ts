@@ -54,11 +54,11 @@ export class TopFiveCredoresComponent implements OnInit {
           {
             data: this.dataChart,
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)'],
+              'rgba(255, 99, 132)',
+              'rgba(54, 162, 235)',
+              'rgba(255, 206, 86)',
+              'rgba(75, 192, 192)',
+              'rgba(153, 102, 255)'],
             borderWidth: 2
           }
         ]
@@ -82,15 +82,6 @@ export class TopFiveCredoresComponent implements OnInit {
               display: false
             }
           ]
-        },
-        plugins: {
-          datalabels: {
-            display: true,
-            color: 'black',
-            formatter: function (value: any) {
-              return value.toFixed(1) + '%';
-            }
-          }
         }
       }
     });

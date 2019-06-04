@@ -50,7 +50,8 @@ export class FiveYearsPagamentosComponent implements OnInit {
         datasets: [
           {
             data: this.dataChart,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: ('rgba(255, 0, 0)'),
             borderWidth: 2
           }
         ]
@@ -62,6 +63,13 @@ export class FiveYearsPagamentosComponent implements OnInit {
         title: {
           display: false,
         },
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem: any) {
+              return tooltipItem.yLabel.toLocaleString('pt-BR');
+            }
+          }
+        },
         scales: {
           xAxes: [
             {
@@ -70,7 +78,12 @@ export class FiveYearsPagamentosComponent implements OnInit {
           ],
           yAxes: [
             {
-              display: true
+              display: true,
+              ticks: {
+                callback: function (value: number) {
+                  return value.toLocaleString('pt-BR');
+                }
+              }
             }
           ]
         },
@@ -79,7 +92,7 @@ export class FiveYearsPagamentosComponent implements OnInit {
             display: true,
             color: 'black',
             formatter: function (value: any) {
-              return value.toFixed(1) + '%';
+              return value.toFixed(2);
             }
           }
         }
