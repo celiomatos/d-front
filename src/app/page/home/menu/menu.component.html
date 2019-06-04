@@ -1,15 +1,15 @@
 <mat-accordion>
   <div fxLayout="column" fxLayoutAlign="space-around stretch" class="d-menu">
     <a (click)="closeSideNav()" [routerLink]="['/dashboard']" mat-button>
-      <mat-icon>home</mat-icon>
+      <mat-icon>dashboard</mat-icon>
       <span>Dashboard</span>
     </a>
     <a (click)="closeSideNav()" [routerLink]="['/pagamento']" mat-button>
       <mat-icon>shopping_cart</mat-icon>
-      <span>Pagamento</span>
+      <span>payment</span>
     </a>
     <a (click)="closeSideNav()" [routerLink]="['/login']" mat-button>
-      <mat-icon>delete</mat-icon>
+      <mat-icon>exit_to_app</mat-icon>
       <span>Logout</span>
     </a>
   </div>
