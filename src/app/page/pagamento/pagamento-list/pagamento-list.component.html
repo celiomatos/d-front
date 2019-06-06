@@ -1,7 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" class="div-header">
-  <div>
-    <button mat-button (click)="search()">Pesquisar</button>
-    <button mat-button (click)="excel()">Excel</button>
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+    <button mat-fab (click)="search()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-fab (click)="excel()">
+      <mat-icon>save_alt</mat-icon>
+    </button>
   </div>
   <mat-card class="card-valor">
     <div fxLayout="column" fxLayoutAlign="center end">

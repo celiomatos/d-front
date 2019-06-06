@@ -11,5 +11,6 @@ export enum LanguagePt {
   CLASSIFICACOES = 'Classificações',
   CREDORES = 'Credores',
   USER = 'Usuário',
-  PASSWORD = 'Senha'
+  PASSWORD = 'Senha',
+  LIMIT_EXCELL = 'pesquisa gera mais que 1.000 registros, planilha não será gerada'
 }

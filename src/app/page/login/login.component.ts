@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { M6S } from './../../shared/messages';
@@ -12,9 +13,13 @@ import { M6S } from './../../shared/messages';
 export class LoginComponent implements OnInit {
   m6s = M6S;
   formValidation: FormGroup;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    sessionStorage.clear();
     this.formValidation = new FormGroup({
       user: new FormControl('', [Validators.required]),
       senha: new FormControl('', [Validators.required])
@@ -30,7 +35,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       error => {
-        console.log(error);
+        this.snackBar.open(error.error.error, '', {
+          duration: 3000,
+        });
       }
     );
   }

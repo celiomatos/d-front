@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
+import { MatDialog, MatPaginator, MatSnackBar, MatTableDataSource, PageEvent } from '@angular/material';
 import { saveAs } from 'file-saver';
+import { M6S } from 'src/app/shared/messages';
 import { PagamentoSearch } from '../shared/pagamento.dto';
 import { Pagamento } from '../shared/pagamento.model';
 import { PagamentoService } from '../shared/pagamento.service';
@@ -12,6 +13,7 @@ import { PagamentoSearchComponent } from './../pagamento-search/pagamento-search
   styleUrls: ['./pagamento-list.component.scss']
 })
 export class PagamentoListComponent implements OnInit {
+  m6s = M6S;
   tableColumns = ['orgao', 'credor', 'data', 'valor', 'nrob', 'nrnl', 'nrne', 'fonte', 'classificacao'];
   dataSource = new MatTableDataSource<Pagamento>();
   page = 0;
@@ -22,7 +24,10 @@ export class PagamentoListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private dialog: MatDialog, private pagamentoService: PagamentoService) { }
+  constructor(
+    private dialog: MatDialog,
+    private pagamentoService: PagamentoService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -39,7 +44,9 @@ export class PagamentoListComponent implements OnInit {
         this.totalElements = data.totalElements;
       },
       error => {
-        console.log(error);
+        this.snackBar.open(error.error.error, '', {
+          duration: 3000,
+        });
       }
     );
   }
@@ -71,7 +78,9 @@ export class PagamentoListComponent implements OnInit {
 
   excel() {
     if (this.totalElements > 1000) {
-      console.log('maior que 1000');
+      this.snackBar.open(this.m6s.message('LIMIT_EXCELL'), '', {
+        duration: 3000,
+      });
     } else {
       this.pagamentoService.excell(this.searchDto).subscribe(data => {
         this.saveToFileSystem(data);
