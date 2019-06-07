@@ -36,3 +36,14 @@ docker run --network d_network -d -p 90:80/tcp test-application:latest
 
 ## Gera build java
 clean compile install
+
+## gerando novos containers e images
+gere um novo build do app java
+clean compile install
+depois
+docker build -f Dockerfile -t d-docker-compose_d-server-main .
+docker run --network d-docker-compose_d_network --name d_main -p 8084:8084 -d d-docker-compose_d-server-main
+
+## build front
+docker build -f Dockerfile -t d-docker-compose_d-server-front .
+docker run --network d-docker-compose_d_network --name d_front -d -p 90:80/tcp d-docker-compose_d-server-front
