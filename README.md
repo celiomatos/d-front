@@ -33,3 +33,6 @@ https://yarnpkg.com/pt-BR/
 
 docker build --rm -t test-application:latest .
 docker run --network d_network -d -p 90:80/tcp test-application:latest
+
+## Gera build java
+clean compile install
