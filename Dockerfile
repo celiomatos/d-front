@@ -1,4 +1,4 @@
-FROM node:10.15.3-alpine AS builder
+FROM node:10.16.0-alpine AS builder
 COPY . ./d-front
 WORKDIR /d-front
 RUN npm i
