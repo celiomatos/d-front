@@ -62,6 +62,7 @@ ppagamento
 palert
 
 ## executa o p pagamento
+docker build -t my-cron-pagamento .
 docker run --name my-print-pagamentos --restart always -v my-vol:/app/capturas -d my-cron-pagamento
 
 ## e criar-se o crontab para print pagamentos
@@ -72,6 +73,7 @@ crontab -e
 ## backup e load do my-cron-alert
 
 ## docker run na image my-cron-alert
+docker build -t my-cron-alert .
 docker run --name my-print-alert --restart always -v my-vol:/app/capturas -d my-cron-alert
 
 ## e criar-se o crontab para print alert
