@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://192.168.0.50:8086/',
-  authUrl: 'http://192.168.0.50:8081/oauth/token'
+  apiUrl: 'http://192.168.0.50:8089/api/',
+  authUrl: 'http://192.168.0.50:8089/oauth/token'
 };
 
 /*
