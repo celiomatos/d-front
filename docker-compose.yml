@@ -1,8 +1,38 @@
 version: '3'
 services:
+    d-server-minio:
+	  image: minio/minio server /data
+	  container_name: d-server-minio
+      restart: always
+      networks:
+        - d_network
+      environment:
+        - MINIO_ACCESS_KEY=C3AM3UQ867SPQQA43P2F
+        - MINIO_SECRET_KEY=zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+	  ports:
+        - '9000:9000'
+      volumes:
+        - d_data:/data
+        - d_data:/root/.minio			 
+  d-cron-alert:
+    build: docker-files/docker_cron_alert
+    container_name: d-cron-alert
+    restart: always
+    networks:	
+      - d_network
+	volumes:
+      - d_data:/app/capturas
+  d-cron-pagamento:
+    build: docker-files/docker_cron_pagamento
+    container_name: d-cron-pagamento
+    restart: always
+    networks:	
+      - d_network
+	volumes:
+      - d_data:/app/capturas	  
   d-server-db:
     image: postgres:11
-    container_name: d_postgres
+    container_name: d-server-db
     restart: always
     networks:
       - d_network
@@ -12,63 +42,94 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - d_data:/var/lib/postgresql/data
-  d-server-auth:
-    build: docker-files/docker_auth
-    container_name: d_auth
+      - d_data:/var/lib/postgresql/data	  
+  d-server-eureka:
+    build: docker-files/docker_eureka
+    container_name: d-server-eureka
     restart: always
     ports:
-      - '8081:8081'
+      - '8088:8088'
+    networks:
+      - d_network
+  d-server-admin:
+    build: docker-files/docker_admin
+    container_name: d-server-admin
+    restart: always
+    ports:
+      - '8087:8087'
+    networks:
+      - d_network   	  	  
+  d-server-auth:
+    build: docker-files/docker_auth
+    container_name: d-server-auth
+    restart: always
+    networks:
+      - d_network
+    depends_on:
+      - 'd-server-db'
+  d-server-scraper:
+    build: docker-files/docker_scraper
+    container_name: d-server-scraper
+    restart: always
+    networks:
+      - d_network
+    depends_on:
+      - 'd-server-db'	  
+  d-server-main:
+    build: docker-files/docker_main
+    container_name: d-server-main
+    restart: always
+    networks:
+      - d_network
+    depends_on:
+      - 'd-server-db'
+  d-server-mail:
+    build: docker-files/docker_mail
+    container_name: d-server-mail
+    restart: always
     networks:
       - d_network
     depends_on:
       - 'd-server-db'
   d-server-schedule:
     build: docker-files/docker_schedule
-    container_name: d_schedule
+    container_name: d-server-schedule
     restart: always
-    ports:
-      - '8082:8082'
     networks:
       - d_network
     depends_on:
       - 'd-server-db'
-      - 'd-server-auth'
       - 'd-server-scraper'
-  d-server-scraper:
-    build: docker-files/docker_scraper
-    container_name: d_scraper
+  d-server-gateway:
+    build: docker-files/docker_gateway
+    container_name: d-server-gateway
     restart: always
-    ports:
-      - '8083:8083'
     networks:
       - d_network
     depends_on:
-      - 'd-server-db'
       - 'd-server-auth'
-  d-server-main:
-    build: docker-files/docker_main
-    container_name: d_main
+  d-server-zuul:
+    build: docker-files/docker_zuul
+    container_name: d-server-zuul
     restart: always
-    ports:
-      - '8084:8084'
+	ports:
+      - '8089:8089'
     networks:
       - d_network
     depends_on:
-      - 'd-server-db'
-      - 'd-server-auth'
-  d-front:
-    build: docker-files/docker_front
-    container_name: d_front
+	  - 'd-server-eureka'
+	  - 'd-server-auth'
+	  - 'd-server-gateway'      	 
+  d-server-front:
+    build: docker-files/d-front
+    container_name: d-server-front
     restart: always
     ports:
       - '90:80'
     networks:
       - d_network
     depends_on:
-      - 'd-server-db'
-      - 'd-server-auth'
-      - 'd-server-main'
+      - 'd-server-zuul'
 volumes:
   d_data:
 networks:
